@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuxoro — Personal Branding & Content</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="main-nav">
+        <div class="nav-brand">Yuxoro</div>
+        <div class="nav-links">
+            <a href="#personal-branding" data-i18n="nav_services">Personal Branding</a>
+            <a href="#plans" data-i18n="nav_plans">Plans</a>
+            <a href="#process" data-i18n="nav_process">Process</a>
+        </div>
+        <div class="nav-controls">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+                <span>/</span>
+                <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">AR</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="maintenance-screen" style="display: none;">
+        <div class="maintenance-inner">
+            <div class="maintenance-logo">Yuxoro</div>
+            <h1>Temporarily Unavailable</h1>
+            <p>We're performing maintenance. Back soon.</p>
+        </div>
+    </div>
+
+    <section class="hero section-padding">
+        <h1 class="h1" data-i18n="hero_title">Your Personal Brand, Scaled.</h1>
+        <p class="hero-sub" data-i18n="hero_subtitle">High-converting content and personal branding systems for creators, entrepreneurs, and agencies.</p>
+        <div class="hero-ctas">
+            <a href="#plans" class="btn btn-primary btn-xl" data-i18n="hero_cta">Get Started</a>
+        </div>
+    </section>
+
+    <section id="personal-branding" class="services-section section-padding">
+        <div class="service-full">
+            <div>
+                <h2 data-i18n="service_heading">What We Do</h2>
+                <p data-i18n="service_desc">Build an authentic, scalable personal brand that converts. We handle strategy, content creation, and community growth.</p>
+                <ul>
+                    <li data-i18n="service_feature_1">Brand strategy & positioning</li>
+                    <li data-i18n="service_feature_2">Content calendar & production</li>
+                    <li data-i18n="service_feature_3">Community management</li>
+                    <li data-i18n="service_feature_4">Analytics & optimization</li>
+                    <li data-i18n="service_feature_5">Script writing & concepts</li>
+                    <li data-i18n="service_feature_6">Professional filming</li>
+                    <li data-i18n="service_feature_7">Editing & post-production</li>
+                    <li data-i18n="service_feature_8">A/B testing & revisions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="showreel" class="showreel-section section-padding">
+        <div class="reel-header">
+            <span class="reel-label" data-i18n="showreel_label">Showreel</span>
+            <h2 class="reel-title" data-i18n="showreel_heading">See Our Work</h2>
+        </div>
+        <div class="reel-player-wrapper">
+            <button class="reel-arrow reel-arrow-left" onclick="prevVideo()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="reel-player">
+                <video id="reel-video" width="100%" controls style="width: 100%; height: 100%; object-fit: contain;" preload="metadata">
+                    <source src="./showreel.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <button class="reel-arrow reel-arrow-right" onclick="nextVideo()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+        <div class="reel-footer">
+            <p class="reel-desc" data-i18n="reel0_desc">See how we create high-converting content.</p>
+        </div>
+    </section>
+
+    <section id="plans" class="plans-section section-padding">
+        <div class="plans-header">
+            <div class="billing-toggle">
+                <div class="billing-knob"></div>
+                <label class="billing-label active" onclick="toggleBilling()" data-i18n="per_month">Monthly</label>
+                <label class="billing-label" onclick="toggleBilling()" data-i18n="per_year">Yearly</label>
+            </div>
+            <h2 class="plans-title" data-i18n="plans_heading">Simple, Transparent Pricing</h2>
+            <p class="plans-sub" data-i18n="plans_subtitle">Everything you need to build your personal brand and scale your reach.</p>
+        </div>
+
+        <div class="pkg-grid">
+            <div class="pkg-card">
+                <h3 class="pkg-name" data-i18n="plan_starter">Starter</h3>
+                <p class="pkg-desc" data-i18n="plan_starter_desc">Perfect for individuals getting started with personal branding.</p>
+                <div class="pkg-price">
+                    <span class="currency currency-symbol">$</span>
+                    <span class="amount plan-price" data-plan="starter" data-monthly="50" data-yearly="40">50</span>
+                    <span class="period billing-period" data-i18n="per_month">/ month</span>
+                </div>
+                <button class="pkg-cta" onclick="checkout('starter')" data-i18n="plan_cta">Choose Plan</button>
+                <ul class="pkg-features">
+                    <li data-i18n="plan_starter_f1">5 content pieces/month</li>
+                    <li data-i18n="plan_starter_f2">Email support</li>
+                    <li data-i18n="plan_starter_f3">Basic analytics</li>
+                </ul>
+            </div>
+
+            <div class="pkg-card featured">
+                <div class="pkg-num-row">
+                    <h3 class="pkg-name" data-i18n="plan_growth">Growth</h3>
+                    <span class="popular-badge" data-i18n="plan_badge_seller">Best Seller</span>
+                </div>
+                <p class="pkg-desc" data-i18n="plan_growth_desc">For growing creators and agencies scaling their presence.</p>
+                <div class="pkg-price">
+                    <span class="currency currency-symbol">$</span>
+                    <span class="amount plan-price" data-plan="growth" data-monthly="180" data-yearly="144">180</span>
+                    <span class="period billing-period" data-i18n="per_month">/ month</span>
+                </div>
+                <button class="pkg-cta" onclick="checkout('growth')" data-i18n="plan_cta">Choose Plan</button>
+                <ul class="pkg-features">
+                    <li data-i18n="plan_growth_f1">10 content pieces/month</li>
+                    <li data-i18n="plan_growth_f2">Priority support</li>
+                    <li data-i18n="plan_growth_f3">Advanced analytics</li>
+                </ul>
+            </div>
+
+            <div class="pkg-card">
+                <div class="pkg-num-row">
+                    <h3 class="pkg-name" data-i18n="plan_pro">Pro</h3>
+                    <span class="popular-badge" data-i18n="plan_badge_value">Best Value</span>
+                </div>
+                <p class="pkg-desc" data-i18n="plan_pro_desc">Complete personal branding with full agency-level service.</p>
+                <div class="pkg-price">
+                    <span class="currency currency-symbol">$</span>
+                    <span class="amount plan-price" data-plan="pro" data-monthly="240" data-yearly="192">240</span>
+                    <span class="period billing-period" data-i18n="per_month">/ month</span>
+                </div>
+                <button class="pkg-cta" onclick="checkout('pro')" data-i18n="plan_cta">Choose Plan</button>
+                <ul class="pkg-features">
+                    <li data-i18n="plan_pro_f1">Unlimited content</li>
+                    <li data-i18n="plan_pro_f2">Video production</li>
+                    <li data-i18n="plan_pro_f3">Monthly strategy calls</li>
+                </ul>
+            </div>
+
+            <div class="pkg-card">
+                <h3 class="pkg-name" data-i18n="plan_custom">Custom</h3>
+                <p class="pkg-desc" data-i18n="plan_custom_desc">Build your package. $70 base + $20 per deliverable.</p>
+                <div class="pkg-price">
+                    <span class="currency currency-symbol">$</span>
+                    <span class="amount" id="custom-price">70</span>
+                    <span class="period" data-i18n="plan_custom_base">+</span>
+                </div>
+                <div class="custom-selector">
+                    <label data-i18n="plan_custom_select">Select deliverables:</label>
+                    <div class="custom-options">
+                        <label><input type="checkbox" onchange="updateCustomPrice()"> Website (+$20)</label>
+                        <label><input type="checkbox" onchange="updateCustomPrice()"> Scripts (+$20)</label>
+                        <label><input type="checkbox" onchange="updateCustomPrice()"> Posters (+$20)</label>
+                    </div>
+                </div>
+                <button class="pkg-cta" onclick="checkout('custom')" data-i18n="plan_cta">Choose Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process-section section-padding">
+        <h2 class="process-title" data-i18n="process_heading">How We Work</h2>
+        <div class="timeline">
+            <div class="timeline-step left">
+                <div class="step-dot"></div>
+                <div class="step-content">
+                    <span class="step-num">1</span>
+                    <h3 data-i18n="step_1_title">Discovery</h3>
+                    <p data-i18n="step_1_desc">We audit your brand, audience, and goals to create a tailored strategy.</p>
+                </div>
+            </div>
+
+            <div class="timeline-step right">
+                <div class="step-content">
+                    <span class="step-num">2</span>
+                    <h3 data-i18n="step_2_title">Strategy</h3>
+                    <p data-i18n="step_2_desc">We develop a comprehensive content strategy and messaging framework.</p>
+                </div>
+                <div class="step-dot"></div>
+            </div>
+
+            <div class="timeline-step left">
+                <div class="step-dot"></div>
+                <div class="step-content">
+                    <span class="step-num">3</span>
+                    <h3 data-i18n="step_3_title">Production</h3>
+                    <p data-i18n="step_3_desc">We create high-quality content designed to convert your audience.</p>
+                </div>
+            </div>
+
+            <div class="timeline-step right">
+                <div class="step-content">
+                    <span class="step-num">4</span>
+                    <h3 data-i18n="step_4_title">Optimization</h3>
+                    <p data-i18n="step_4_desc">We monitor performance, test, and refine for maximum impact.</p>
+                </div>
+                <div class="step-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="funnel-section section-padding">
+        <span class="funnel-title" data-i18n="funnel_label">Conversion</span>
+        <div class="funnel-steps">
+            <div class="funnel-step" data-i18n="funnel_awareness">Awareness</div>
+            <div class="funnel-step" data-i18n="funnel_interest">Interest</div>
+            <div class="funnel-step" data-i18n="funnel_engagement">Engagement</div>
+            <div class="funnel-step" data-i18n="funnel_conversion">Conversion</div>
+        </div>
+    </section>
+
+    <section class="final-cta section-padding">
+        <h2 data-i18n="cta_title">Ready to scale your personal brand?</h2>
+        <button class="btn btn-primary btn-xl" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})" data-i18n="cta_button">Start Now</button>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-brand">Yuxoro</div>
+        <span class="footer-copy" data-i18n="footer_copy">© 2026 Yuxoro. All rights reserved.</span>
+    </footer>
+
+    <div id="checkout-overlay" onclick="closeCheckout(event)" style="display: none;">
+        <div class="checkout-modal">
+            <button class="checkout-close" onclick="closeCheckoutBtn()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="checkout-header">
+                <div class="checkout-logo">Yuxoro</div>
+                <h2 class="checkout-title" id="checkout-plan-label">Complete Your Order</h2>
+                <div class="checkout-price-row">
+                    <span class="checkout-price-sym" id="checkout-sym">$</span>
+                    <span class="checkout-price-num" id="checkout-amount">0</span>
+                    <span class="checkout-price-period" id="checkout-period">/ month</span>
+                </div>
+            </div>
+            <div class="checkout-form">
+                <div class="checkout-row">
+                    <div class="checkout-field">
+                        <label>First Name</label>
+                        <input type="text" id="co-first" placeholder="Ahmed" required />
+                    </div>
+                    <div class="checkout-field">
+                        <label>Last Name</label>
+                        <input type="text" id="co-last" placeholder="Hassan" required />
+                    </div>
+                </div>
+                <div class="checkout-field">
+                    <label>Email</label>
+                    <input type="email" id="co-email" placeholder="you@example.com" required />
+                </div>
+                <div class="checkout-field">
+                    <label>Phone</label>
+                    <input type="tel" id="co-phone" placeholder="+201001234567" required />
+                </div>
+                <p id="checkout-error" class="checkout-error"></p>
+                <button class="checkout-submit" onclick="submitCheckout()">Pay Now</button>
+                <p class="checkout-note">Secure payment powered by Paymob.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="api-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
