@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuxoro Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <main class="admin-shell">
+        <section id="login-panel" class="login-panel" aria-labelledby="login-title">
+            <a class="back-link" href="index.html">← Back to website</a>
+            <div class="admin-logo">Yuxoro Admin</div>
+            <h1 id="login-title">Admin Login</h1>
+            <p class="muted">Sign in to view customer requests and site settings.</p>
+            <form id="login-form">
+                <label for="admin-email">Email</label>
+                <input id="admin-email" name="email" type="email" autocomplete="username" required>
+                <label for="admin-password">Password</label>
+                <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+                <p id="login-error" class="error-message" role="alert"></p>
+                <button class="primary-button" type="submit">Login</button>
+            </form>
+        </section>
+
+        <section id="admin-panel" class="admin-panel" hidden>
+            <header class="admin-header">
+                <div>
+                    <div class="admin-logo">Yuxoro Admin</div>
+                    <p class="muted">Customer requests and website controls</p>
+                </div>
+                <button id="logout-button" class="secondary-button" type="button">Sign out</button>
+            </header>
+
+            <section class="admin-section" aria-labelledby="dashboard-title">
+                <div class="section-heading">
+                    <div>
+                        <h1 id="dashboard-title">Dashboard</h1>
+                        <p class="muted">Requests submitted through the website.</p>
+                    </div>
+                    <button id="refresh-button" class="secondary-button" type="button">Refresh</button>
+                </div>
+                <div class="metrics-grid">
+                    <article class="metric-card"><span class="metric-label">Customer requests</span><strong id="total-requests">0</strong></article>
+                    <article class="metric-card"><span class="metric-label">Requests emailed</span><strong id="emails-sent">0</strong></article>
+                    <article class="metric-card"><span class="metric-label">Requested total</span><strong id="requested-total">EGP 0</strong></article>
+                </div>
+            </section>
+
+            <section class="admin-section" aria-labelledby="requests-title">
+                <div class="section-heading">
+                    <div>
+                        <h2 id="requests-title">Customer requests</h2>
+                        <p class="muted">Every submitted request is listed here.</p>
+                    </div>
+                    <input id="search-input" type="search" placeholder="Search email, name, or phone" aria-label="Search requests">
+                </div>
+                <div class="table-scroll">
+                    <table class="requests-table">
+                        <thead><tr><th>Date</th><th>Customer</th><th>Email</th><th>Phone</th><th>Plan</th><th>Price</th><th>Request status</th><th>Email status</th></tr></thead>
+                        <tbody id="requests-tbody"><tr><td colspan="8" class="empty-state">Sign in to load requests.</td></tr></tbody>
+                    </table>
+                </div>
+                <p id="requests-error" class="error-message" role="alert"></p>
+            </section>
+
+            <section class="admin-section maintenance-card" aria-labelledby="maintenance-title">
+                <div>
+                    <h2 id="maintenance-title">Maintenance mode</h2>
+                    <p id="maintenance-status" class="muted">Loading site status…</p>
+                    <p class="muted">Visitors will see the website blurred behind a “Maintenance Mode” message and cannot interact with it.</p>
+                </div>
+                <button id="maintenance-button" class="primary-button" type="button" disabled>Loading…</button>
+            </section>
+            <p id="admin-error" class="error-message" role="alert"></p>
+        </section>
+    </main>
+    <script src="api-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
